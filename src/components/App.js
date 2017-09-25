@@ -6,6 +6,7 @@ class App extends Component {
     return (
       <div className="App">
         Welcome
+        <p>Let's make a memory together</p>
       </div>
     );
   }
