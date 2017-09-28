@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/App.css';
 import { metropolitan } from '../data/data';
-import { Button } from 'semantic-ui-react';
+import { Button, Card, Image, Grid, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -9,16 +9,22 @@ export default class Metropolitan extends React.Component {
   render() {
     return (
       <div className="App">
-        Metropolitan
-        {metropolitan.map((spot, i) => {
-          return <div key={i}>
-            <p>Title: {spot.title}</p>
-            <img width="200px" src={spot.img} alt={spot.title} />
-            <p>Description: {spot.description}</p>
-            <p>Price: {spot.price}</p>
-          </div>
+        <Header as='h3' block>Metropolitan</Header>
+        <Grid columns={3} centered>
+          {metropolitan.map((spot, i) => {
+            return <Grid.Column key={i}>
+            <Card>
+              <Image src={spot.img} alt={spot.title} />
+              <Card.Content>
+                <Card.Header>Title: {spot.title}</Card.Header>
+                <Card.Description>Description: {spot.description}</Card.Description>
+                <Card.Description>Price: {spot.price}</Card.Description>
+              </Card.Content>
+            </Card>
+          </Grid.Column>
         })}
-        <Link to='/beach'><Button>Check Out the Beach</Button></Link>
+        </Grid>
+        <Link to='/beach'><Button className='check-out'>Check Out the Beach</Button></Link>
       </div>
     )
   }
